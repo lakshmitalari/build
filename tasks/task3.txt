@@ -1,0 +1,132 @@
+task 3
+In us-west-2 region
+
+
+
+Create bastion machine ( 22 from anywhere ).
+
+create one alb and 2 ec2 machines.
+
+
+For elb security group 8080 from anywhere.
+
+
+For 4 ec2 machines
+
+
+ec2- first server - nexus installation
+
+
+ec2 - second server- Jenkins 
+
+
+
+other 2 ec2 machines install tomcats.
+
+
+
+22 from bastion security group.
+
+8080 from alb secrutity group is source.
+
+
+
+in Jenkin server
+
+
+
+create a job for build and make it as auto scm poll.
+
+
+create second job for deploy in two tomcat servers.
+
+
+if i run build job it has to tirgger automatically deployment job.
+
+
+Attach two tomcat with ec2 and assign the alb with your own doamin name. (tas3.your domain.com has to result to output).
+
+
+
+
+answer:
+
+
+
+1.first we have to launch bastion server
+2.ssh-22-anywhere------>bastionsg
+3.launch 4 instances with ssh-22-bastionsg and  tcp-8080-anywhere
+4.in first server install java and nexus(nexus.sonatype.org/download)
+  https://download.sonatype.com/nexus/oss/nexus-2.14.7-01-bundle.tar.gz
+5.change permission to bin folder to 755 and change owner permissions to all nexus folders and nexus files as ec2-user:ec2-user.and change user in vi nexus.
+ 
+
+29  chown ec2-user:ec2-user nexus-professional-2.14.8-01
+   30  sudo chown ec2-user:ec2-user nexus-professional-2.14.8-01
+   31  ls -l
+   32  cd nexus-professional-2.14.8-01
+   33  ls -l
+   34  sudo chown ec2-user:ec2-user *
+   35  ls -l
+   36  cd bin
+   37  ls -l
+   38  chown ec2-user:ec2-user *
+   39  sudo chown ec2-user:ec2-user *
+   40  ls -l
+   41  clear
+   42  ./nexus start
+   43  ls
+   44  vi nexus
+   45  sudo vi nexus
+   46  ./nexus start
+   47  sudo vi nexus
+   48  ./nexus start
+   49  sudo ./nexus start
+   50  ps -ef | grep nexus
+   51  its working na
+   52  ping google.com
+   53  ps -ef | grep nexus
+   54  clear
+   55  ls
+
+6.start nexus is cd bin----->./nexus start------>./nexus shutdown
+
+7.check with browser pubilc ip:8081/nexus
+
+  http://52.32.250.37:8081/nexus/licensing/request.html
+
+Jenkins server installation
+
+
+1.we have to launch server with ssh-22-bastionsg   and  tcp-8080-anywhere
+
+2.install java with compatable jdk-8u-151.rpm and get install tomcat 8
+
+3.tomcat start in bin ---->./startup.sh
+
+4.check with public ip:8080
+
+5.deploy the jenkins.war in tomcat directory ----->webapps
+
+6.check with pubicip:8080/jenkins
+
+7.cat /root/.----> in terminal
+
+8.login jenkins
+ 
+Tomcat servers installation
+
+1.we have to take two instances ssh-22-bastionsg   and tcp-8080-anywhere
+
+2.install java and tomcat in both servers
+
+3.start tomcat ---->bin----> ./startup.sh
+
+
+4. we have to setup password less setup from bastion server to tomcat1 and tomcat2----->vi /etc/ssh/sshd_config and service restart sshd
+
+    -->vi /etc/hosts  -----> privateip tomcat1     and  private ip tomcat2
+
+    --->ssh-keygen ------>ssh-copy-id root@hostname tomcat1
+    --->ssh-keygen ------>ssh-copy-id root@hostname tomcat2
+Jenkins build and deploy jobs

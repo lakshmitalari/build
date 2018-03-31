@@ -1,0 +1,37 @@
+ 
+
+Installation Steps :
+
+1.    Please launch an Amazon Linux instance using Amazon Linux AMI.
+
+2.    Login to your Amazon Linux instance.
+
+3    Become root using “sudo su -” command.
+
+4    Update your repositories
+
+    yum update
+
+5    Get Jenkins repository using below command
+
+    wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+
+6    Get Jenkins repository key
+
+    rpm --import http://pkg.jenkins-ci.org/redhat-stable/jenkins-ci.org.key
+
+7    Install jenkins package
+
+    yum install jenkins
+
+8    Start jenkins and make sure it starts automatically at system startup
+
+    service jenkins start
+
+    chkconfig jenkins on
+
+9    Open your browser and navigate to http://:8080. You will see jenkins dashboard.
+
+That’s it. You have your jenkins setup up and running. Now, you can create jobs to build the code.
+
+Reference: http://sanketdangi.com/post/62715793234/install-configure-jenkins-on-amazon-linux

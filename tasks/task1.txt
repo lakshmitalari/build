@@ -1,0 +1,50 @@
+Sections- Git 5 labs
+
+AWS- 15 labs
+
+Jenkins - 50 jobs ( pipeline, dynamic choice params, webhooks,emails , ldap , problm matrix security).
+( Anusha interview questions reference)
+
+Ansible - 10 
+
+( Apache installation )
+
+(Tomcat installation)
+
+( 5 war files deployment)
+
+(DB deployment )
+
+
+
+
+
+
+Task-1
+
+
+
+In Mumbai region 
+
+
+Create bastion machine ( 22 from anywhere ).
+
+
+create one alb and 2 ec2 machines.
+
+
+For elb security group 80 from anywhere.
+
+
+
+For 2 webservers.
+
+
+22 from bastion security group.
+
+80 from alb secrutity group is source.
+
+
+
+Attach two webservers with ec2 and assign the alb with your own doamin name. 
+(tas1.your domain.com has to result to output).

@@ -1,0 +1,30 @@
+task 4
+In east-1 region
+
+
+
+Create bastion machine ( 22 from anywhere ).
+
+create one alb and 2 ec2 machines.
+
+For elb security group 8080 from anywhere.
+
+For 4 ec2 machines.
+
+
+
+1)install ansible in first ec2 machine
+
+
+2) from ansible master server create play books to install tomcat in other second and third ec2 machine
+
+
+3) create a playbook to install apache in 4th httpd server
+Attach two tomcat with ec2 and assign the alb with your own doamin name. (tas4.your domain.com has to result to output).
+
+
+
+We are going to do above labs
+and tasks
+i need each of you to complete
+@here please ready with those tasks

@@ -1,0 +1,47 @@
+task 2
+In Singapoor region
+
+
+
+Create bastion machine ( 22 from anywhere ).
+
+create one alb and 2 ec2 machines.
+
+For elb security group 8080 from anywhere.
+
+For 2 ec2 machines.
+
+22 from bastion security group.
+
+8080 from alb secrutity group is source.
+
+
+
+Attach two tomcat with ec2 and assign the alb with your own doamin name. (tas2.your domain.com has to result to output).
+
+
+
+
+answer:
+
+
+first launch bastion machine----->ssh-22-anywhere.
+
+launchtwo machines------>ssh-22-bastionsg and custom tcp-8080-anywhere
+
+
+install java------>jdk-8u151.rpm---->in both machines -----> install tomcat using wget.
+
+now create alb with securitygroup-tcp-8080-anywhere------>give target group also http-8080.
+
+give a path is /index.jsp in tomcat.
+
+
+now check health is ok or not ------>ok------>two machines we give securitygroup is --->ssh-22-bastionsg and tcp-8080-albsg
+
+now check with alb dns name
+and
+
+your domain name in route53.
+
+

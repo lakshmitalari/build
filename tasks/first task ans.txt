@@ -1,0 +1,9 @@
+total 3 machines
+-- first machine is bastion --- launch linux machine --- security group is: ssh-22-anywhere
+-- second and third machine --- launch 2 linux machines -- security group is: http-80-anywhere, ssh-22-custom-<firstmachinesgid>
+
+now install apahce in both second and third machines and check in the browser whether apache is running or not
+after that, create alb with the second and thrid machines. give the security group for alb is http-80-anywhere.
+if the health check is not healthy then put the second and third machines security group as: http-80-albsg-custom, ssh-22-custom-<firstmachinesgid>
+now check in the target group instances healthy or not. if it is healthy check in the browserr with the alb dns name.
+now go to route53---> create a hosted zone with domain name you buy in godaddy ---> then u will see 4 name servers--- that name server update in godaddy site ---> now create a record set in route53 --> wait for some time bcoz it will have to recognize the 4 name servers with the godaddy site --> now check in browser with the record set name.
